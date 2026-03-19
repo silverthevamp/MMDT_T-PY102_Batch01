@@ -20,13 +20,13 @@ Q4) Quadratic probing simulation
 # -------------------------
 
 def char_frequency(s: str) -> dict[str, int]:
-    dict = {} 
+    dictionary = {} 
     for char in s:
-        if char in dict: 
-            dict[char] = dict[char] + 1
+        if char in dictionary: 
+            dictionary[char] = dictionary[char] + 1
         else:
-            dict[char] = 1  
-    return dict 
+            dictionary[char] = 1  
+    return dictionary
     raise NotImplementedError
 
 
@@ -35,13 +35,8 @@ def char_frequency(s: str) -> dict[str, int]:
 # -------------------------
 
 def insert_chaining(table: list[list[int]], key: int, size: int) -> list[list[int]]:
-    table = [[], [], []] 
-    index = key % size 
-    if table[index] == None:
-        table[index] = key
-    else : 
-        table[index].append(key) 
-    print (table)
+    index = key % size
+    table[index].append(key)
     return table
     raise NotImplementedError
 # -------------------------
@@ -64,10 +59,10 @@ def insert_linear_probing(table: list[int | None], key: int) -> list[int | None]
 
 def insert_quadratic_probing(table: list[int | None], key: int) -> list[int | None]:
     size = len(table)
-    hash = key % size
+    base = key % size
     i = 0
     while True:
-        index = (hash + i * i) % size
+        index = (base + i * i) % size
         if table[index] is None:
             table[index] = key
             return table
